@@ -36,8 +36,9 @@ for i in $CONTEXTS ; do
         echo ""
     fi
 done
-# Show todo items not associated to a project
-CONTEXT_LIST=$(_list "$TODO_FILE" "$@" | grep -v "\@[[:alnum:]]*")
+# Show todo items not associated to a context
+post_filter_command="${post_filter_command:-}${post_filter_command:+ | } grep -v ' @[[:alnum:]]*' "
+CONTEXT_LIST=$(_list "$TODO_FILE" "$@")
 if [[ -n "${CONTEXT_LIST}" ]]; then
     echo "--- No context ---"
     echo "${CONTEXT_LIST}" | eval $TODOTXT_FINAL_FILTER
