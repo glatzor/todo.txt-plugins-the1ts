@@ -31,7 +31,7 @@ for i in $CONTEXTS ; do
     # Use core _list function, does numbering and colouring for us
     CONTEXT_LIST=$(_list "$TODO_FILE" "\@$i" "$@" | sed 's/\ *@[a-zA-Z0-9._\-]*\ */ /g')
     if [[ -n "${CONTEXT_LIST}" ]]; then
-        echo "--- $i ---"
+        echo -e "${COLOR_CONTEXT:1}@$i${DEFAULT:1}"
         echo "${CONTEXT_LIST}" | eval $TODOTXT_FINAL_FILTER
         echo ""
     fi
