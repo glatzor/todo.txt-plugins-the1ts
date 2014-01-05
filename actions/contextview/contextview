@@ -20,8 +20,6 @@ TODOTXT_DISABLE_FILTER=1
 }
 
 # Show contexts in alphabetical order and todo items in priority  order
-echo "===== Contexts ====="
-echo ""
 
 # Find all contexts and sort
 CONTEXTS=$(grep -o '[^ ]*@[^ ]\+' "$TODO_FILE" | grep '^@' | sort -u | sed 's/^@//g')
